@@ -1,74 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>小徐的个人网站</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f5f7">
+<meta name="description" content="小徐的个人网站：记录想法、作品与日常。">
+<title>小徐 · 个人网站</title>
 <style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:"Microsoft YaHei",sans-serif;
-  background:#f5f6f8;
-  color:#222;
-}
-header{
-  background:#fff;
-  padding:22px;
-  text-align:center;
-  border-bottom:1px solid #eee;
-}
-header h1{margin:0;font-size:28px}
-header p{color:#777;margin-top:10px}
-main{
-  max-width:800px;
-  margin:40px auto;
-  padding:20px;
-}
-.card{
-  background:#fff;
-  padding:25px;
-  border-radius:14px;
-  margin-bottom:20px;
-  box-shadow:0 3px 12px #00000008;
-}
-.card h2{margin-top:0}
-footer{
-  text-align:center;
-  padding:30px;
-  color:#888;
-}
+:root{color-scheme:light;--bg:#f5f5f7;--panel:#fff;--ink:#17171a;--muted:#74747d;--line:#e7e7eb;--accent:#6558f5;--soft:#eeedff;--shadow:0 18px 55px #17171a0a}
+[data-theme="dark"]{color-scheme:dark;--bg:#111114;--panel:#1b1a20;--ink:#f4f3f7;--muted:#aaa7b4;--line:#302e36;--accent:#a49aff;--soft:#29243e;--shadow:0 18px 55px #0003}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;transition:background .25s,color .25s}
+a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{width:min(1100px,calc(100% - 32px));margin:auto}
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:800;letter-spacing:-.5px}.brand span{color:var(--accent)}nav{display:flex;align-items:center;gap:22px;color:var(--muted);font-size:14px}nav a:hover{color:var(--accent)}.icon-btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);width:38px;height:38px;border-radius:50%;cursor:pointer}
+.hero{padding:78px 0 58px;display:grid;grid-template-columns:1.35fr .65fr;gap:30px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--accent);background:var(--soft);padding:6px 12px;border-radius:999px;font-size:13px;font-weight:650}.dot{width:7px;height:7px;background:#38b66b;border-radius:50%;box-shadow:0 0 0 4px #38b66b20}
+h1{font-size:clamp(38px,7vw,72px);line-height:1.12;letter-spacing:-3px;margin:20px 0 16px}h1 em{font-style:normal;color:var(--accent)}.lead{max-width:620px;color:var(--muted);font-size:18px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px;border-radius:12px;border:1px solid var(--line);background:var(--panel);font-weight:650;font-size:14px;transition:transform .2s,border .2s}.btn:hover{transform:translateY(-2px);border-color:var(--accent)}.btn.primary{background:var(--accent);color:white;border-color:var(--accent)}
+.profile-card{background:var(--panel);border:1px solid var(--line);border-radius:25px;padding:25px;box-shadow:var(--shadow);position:relative;overflow:hidden}.profile-card:before{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:var(--soft);right:-70px;top:-75px}.avatar{width:72px;height:72px;border-radius:22px;background:linear-gradient(135deg,var(--accent),#b8b0ff);display:grid;place-items:center;color:white;font-size:27px;font-weight:800;position:relative}.profile-card h2{margin:18px 0 4px;font-size:22px}.profile-card p{margin:0;color:var(--muted);font-size:14px}.mini-stats{display:flex;gap:20px;border-top:1px solid var(--line);margin-top:22px;padding-top:18px}.mini-stats b{display:block;font-size:20px}.mini-stats small{color:var(--muted)}
+section{padding:35px 0 48px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:22px}.section-head h2{font-size:27px;letter-spacing:-.8px;margin:0}.section-head p{color:var(--muted);margin:5px 0 0;font-size:14px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:19px;padding:22px;transition:transform .22s,border .22s;box-shadow:var(--shadow)}.card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}.card-icon{width:43px;height:43px;border-radius:13px;background:var(--soft);display:grid;place-items:center;font-size:20px}.card h3{margin:15px 0 7px;font-size:18px}.card p{color:var(--muted);font-size:14px;margin:0}.tag{display:inline-block;margin-top:16px;padding:4px 9px;border-radius:7px;background:var(--soft);color:var(--accent);font-size:12px}
+.searchbar{display:flex;gap:10px;margin-bottom:16px}.searchbar input{width:100%;padding:12px 15px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);outline:none}.searchbar input:focus{border-color:var(--accent)}
+.project{display:flex;flex-direction:column;min-height:210px}.project .tag{align-self:flex-start}.project .more{margin-top:auto;padding-top:18px;color:var(--accent);font-size:14px;font-weight:650}
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:16px}.note{display:flex;gap:15px}.note-date{min-width:52px;color:var(--accent);font-size:12px;font-weight:700;padding-top:3px}.note h3{margin:0 0 5px;font-size:16px}.note p{margin:0;color:var(--muted);font-size:14px}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.tool{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}.tool h3{margin:0 0 8px}.tool p{color:var(--muted);font-size:13px;margin:0 0 14px}.clock{font-size:28px;font-weight:750;letter-spacing:1px;color:var(--accent)}.tool button{border:1px solid var(--line);background:var(--soft);color:var(--ink);padding:8px 12px;border-radius:10px;cursor:pointer}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:18px}.about-box{border:1px solid var(--line);background:var(--panel);border-radius:20px;padding:24px}.about-box p{color:var(--muted);margin:8px 0}.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.links a{border:1px solid var(--line);padding:8px 12px;border-radius:10px;font-size:13px}
+footer{border-top:1px solid var(--line);padding:26px 0 35px;color:var(--muted);font-size:13px}.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.hidden{display:none!important}.empty{color:var(--muted);padding:20px;text-align:center}
+@media(max-width:760px){nav{gap:12px;font-size:13px}.hero{grid-template-columns:1fr;padding:55px 0 35px}.profile-card{max-width:440px}.grid,.tools{grid-template-columns:1fr 1fr}.notes,.about{grid-template-columns:1fr}h1{letter-spacing:-1.8px}}
+@media(max-width:480px){.wrap{width:calc(100% - 24px)}.nav{height:62px}nav{gap:10px}nav a:nth-child(3){display:none}.grid,.tools{grid-template-columns:1fr}.section-head h2{font-size:23px}.card{padding:19px}}
 </style>
 </head>
-
 <body>
-
 <header>
-<h1>小徐的个人网站</h1>
-<p>欢迎来到我的网站</p>
+  <div class="wrap nav">
+    <a class="brand" href="#top">小徐<span>.</span></a>
+    <nav aria-label="主导航"><a href="#projects">项目</a><a href="#notes">动态</a><a href="#tools">工具</a><a href="#about">关于</a></nav>
+    <button class="icon-btn" id="themeToggle" aria-label="切换主题" title="切换深浅模式">☾</button>
+  </div>
 </header>
+<div class="wrap" id="top">
+  <div class="hero">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> PERSONAL WEBSITE · 2026</span>
+      <h1>你好，我是<em>小徐</em>。<br>欢迎来到我的小站。</h1>
+      <p class="lead">这里记录我的想法、正在做的项目，以及一些值得分享的小东西。网站还在持续更新，欢迎常来看看。</p>
+      <div class="actions"><a class="btn primary" href="#projects">看看我的项目 ↗</a><a class="btn" href="#about">了解更多</a></div>
+    </div>
+    <aside class="profile-card">
+      <div class="avatar">徐</div><h2>小徐的个人主页</h2><p>保持好奇，持续探索。</p>
+      <div class="mini-stats"><div><b>01</b><small>个人网站</small></div><div><b>∞</b><small>可能性</small></div><div><b id="days">0</b><small>网站运行天数</small></div></div>
+    </aside>
+  </div>
 
-<main>
-<div class="card">
-<h2>关于本站</h2>
-<p>这是我的个人网站，正在建设中。</p>
+  <section id="projects">
+    <div class="section-head"><div><h2>精选项目</h2><p>正在制作 / 值得展示的东西</p></div><span class="eyebrow">PROJECTS</span></div>
+    <div class="searchbar"><input id="projectSearch" type="search" placeholder="搜索项目名称或关键词…" aria-label="搜索项目"></div>
+    <div class="grid" id="projectGrid">
+      <article class="card project" data-search="个人网站主页 html css javascript 网站"><div class="card-icon">🌐</div><h3>个人网站</h3><p>这个网站本身。用 HTML、CSS 和 JavaScript 搭建，适配手机与电脑。</p><span class="tag">HTML · CSS · JS</span><a class="more" href="#top">正在浏览 ↗</a></article>
+      <article class="card project" data-search="实验项目 创意 练习"><div class="card-icon">🧪</div><h3>实验项目</h3><p>把新想法做成可以实际体验的小作品，内容可以随时替换。</p><span class="tag">EXPERIMENT</span><a class="more" href="#about">了解更多 ↗</a></article>
+      <article class="card project" data-search="未来计划 新项目 更新"><div class="card-icon">🚀</div><h3>下一件作品</h3><p>这里留给未来的新项目。每完成一件，就在这里更新。</p><span class="tag">COMING SOON</span><a class="more" href="#notes">查看动态 ↗</a></article>
+    </div><div class="empty hidden" id="noProjects">没有找到相关项目。</div>
+  </section>
+
+  <section id="notes">
+    <div class="section-head"><div><h2>最近动态</h2><p>小站的更新记录</p></div><span class="eyebrow">JOURNAL</span></div>
+    <div class="notes">
+      <article class="card note"><div class="note-date">2026<br>11.03</div><div><h3>个人网站升级</h3><p>重新整理首页结构，让页面更清爽，也更适合手机浏览。</p></div></article>
+      <article class="card note"><div class="note-date">持续<br>更新</div><div><h3>新内容待添加</h3><p>后续可以记录学习、项目进度、随手想法和生活片段。</p></div></article>
+    </div>
+  </section>
+
+  <section id="tools">
+    <div class="section-head"><div><h2>小工具</h2><p>页面里可以直接使用的功能</p></div><span class="eyebrow">TOOLBOX</span></div>
+    <div class="tools">
+      <div class="tool"><h3>🕒 当前时间</h3><p>自动显示设备本地时间</p><div class="clock" id="clock">--:--:--</div></div>
+      <div class="tool"><h3>🎲 随机灵感</h3><p id="idea">点击按钮，换一个小想法。</p><button id="ideaBtn">给我一个灵感 ↗</button></div>
+      <div class="tool"><h3>📋 复制网址</h3><p>把本站地址复制，分享给朋友。</p><button id="copyBtn">复制网站地址</button><p id="copyStatus" aria-live="polite"></p></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head"><div><h2>关于本站</h2><p>简单介绍，不需要复杂包装</p></div><span class="eyebrow">ABOUT</span></div>
+    <div class="about">
+      <div class="about-box"><h3>这是一个什么网站？</h3><p>一个个人主页，用来展示项目、记录动态，也可以慢慢变成自己的网络空间。</p><p>目前是静态网站，打开就能访问，不需要安装任何东西。</p></div>
+      <div class="about-box"><h3>联系与分享</h3><p>如果你想添加联系方式、社交平台或更多页面，可以在这里放入真实链接。</p><div class="links"><a href="#projects">项目</a><a href="#notes">动态</a><a href="#top">回到顶部 ↑</a></div></div>
+    </div>
+  </section>
 </div>
-
-<div class="card">
-<h2>我的内容</h2>
-<p>这里以后会放置文章、作品和一些有趣的东西。</p>
-</div>
-
-<div class="card">
-<h2>联系我</h2>
-<p>欢迎访问我的个人网站。</p>
-</div>
-</main>
-
-<footer>
-© 2026 小徐的个人网站
-</footer>
-
+<footer><div class="wrap foot"><span>© <span id="year"></span> 小徐 · 个人网站</span><span>用一点点代码，搭建自己的空间。</span></div></footer>
+<script>
+const root=document.documentElement;
+const saved=localStorage.getItem('xu-theme');
+if(saved==='dark')root.dataset.theme='dark';
+document.getElementById('themeToggle').textContent=root.dataset.theme==='dark'?'☀':'☾';
+document.getElementById('themeToggle').addEventListener('click',()=>{const dark=root.dataset.theme!=='dark';root.dataset.theme=dark?'dark':'light';localStorage.setItem('xu-theme',dark?'dark':'light');document.getElementById('themeToggle').textContent=dark?'☀':'☾';});
+function tick(){const d=new Date();document.getElementById('clock').textContent=d.toLocaleTimeString('zh-CN',{hour12:false});}
+tick();setInterval(tick,1000);
+document.getElementById('year').textContent=new Date().getFullYear();
+const start=new Date('2026-11-03');document.getElementById('days').textContent=Math.max(1,Math.floor((Date.now()-start)/86400000)+1);
+const ideas=['试着做一个有趣的小网页。','把今天学到的东西记录下来。','给旧项目加一个新功能。','用 30 分钟完成一个小目标。','整理一下自己的数字空间。','发现一个新工具并试用它。'];
+document.getElementById('ideaBtn').addEventListener('click',()=>{document.getElementById('idea').textContent=ideas[Math.floor(Math.random()*ideas.length)];});
+document.getElementById('copyBtn').addEventListener('click',async()=>{const s=document.getElementById('copyStatus');try{await navigator.clipboard.writeText(location.href);s.textContent='已复制！可以分享给朋友。';}catch(e){s.textContent='复制失败，请手动复制浏览器地址栏。';}});
+document.getElementById('projectSearch').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();let count=0;document.querySelectorAll('.project').forEach(c=>{const show=c.dataset.search.toLowerCase().includes(q);c.classList.toggle('hidden',!show);if(show)count++;});document.getElementById('noProjects').classList.toggle('hidden',count>0);});
+</script>
 </body>
 </html>
